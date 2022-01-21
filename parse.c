@@ -6,13 +6,13 @@
 /*   By: mbutter <mbutter@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 14:09:18 by mbutter           #+#    #+#             */
-/*   Updated: 2022/01/20 15:59:32 by mbutter          ###   ########.fr       */
+/*   Updated: 2022/01/21 17:05:54 by mbutter          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void check_num(const char *str)
+static void check_num(const char *str)
 {
 	int	i;
 	unsigned int	n;
@@ -40,6 +40,28 @@ void check_num(const char *str)
 		err_arg();
 }
 
+static void check_dup(t_stack *stack)
+{
+	int i;
+	t_elem_of_stack *tmp_i;
+	t_elem_of_stack *tmp_j;
+
+	i = 0;
+	tmp_i = stack->head;
+	while (i < stack->size)
+	{
+		tmp_j = tmp_i->next;
+		while (tmp_j != stack->head)
+		{
+			if (tmp_i->num == tmp_j->num)
+				err_arg();
+			tmp_j = tmp_j->next;
+		}
+		i++;
+		tmp_i = tmp_i->next;
+	}
+}
+
 t_stack *parsing_args(int argc, char **argv)
 {
 	t_stack *stack;
@@ -57,5 +79,6 @@ t_stack *parsing_args(int argc, char **argv)
 		i++;
 		stack->size++;
 	}
+	check_dup(stack);
 	return (stack);
 }
