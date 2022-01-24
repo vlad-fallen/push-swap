@@ -6,14 +6,15 @@
 /*   By: mbutter <mbutter@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 15:41:37 by mbutter           #+#    #+#             */
-/*   Updated: 2022/01/20 16:54:00 by mbutter          ###   ########.fr       */
+/*   Updated: 2022/01/24 18:34:38 by mbutter          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void err_arg(void)
+void err_arg(int n)
 {
+	ft_putstr_fd(ft_itoa(n), 2);
 	ft_putstr_fd("Error\n", 2);
 	exit(EXIT_FAILURE);
 }
@@ -44,6 +45,13 @@ void print_operation(enum e_operation id)
 		write(1, "rrr\n", 4);
 }
 
+int ft_abs(int value)
+{
+	if (value < 0)
+		value = value * (-1);
+	return (value);
+}
+
 //УБРАТЬ ФУНКЦИЮ
 void print_stack(t_elem_of_stack *start_stack, int size_stack)
 {
@@ -54,7 +62,7 @@ void print_stack(t_elem_of_stack *start_stack, int size_stack)
 	tmp = start_stack;
 	while (i < size_stack)
 	{
-		printf("%d\t", tmp->num);
+		printf("%d:%d\t", tmp->num, tmp->markup);
 		tmp = tmp->next;
 		i++;
 	}

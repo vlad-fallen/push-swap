@@ -6,7 +6,7 @@
 #    By: mbutter <mbutter@student.21-school.ru>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/04 15:40:50 by mbutter           #+#    #+#              #
-#    Updated: 2022/01/20 18:23:00 by mbutter          ###   ########.fr        #
+#    Updated: 2022/01/24 18:06:34 by mbutter          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,9 @@ SRCS		=	push_swap.c \
 				operations_reverse_rotate.c \
 				operations_push.c \
 				stack.c \
-				utils.c
+				utils.c \
+				find_median.c \
+				sorting_algo.c
 
 OBJS		=	$(patsubst %.c,%.o,$(SRCS)) 
 

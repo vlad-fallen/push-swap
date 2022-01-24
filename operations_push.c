@@ -6,13 +6,13 @@
 /*   By: mbutter <mbutter@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 14:04:41 by mbutter           #+#    #+#             */
-/*   Updated: 2022/01/20 18:23:41 by mbutter          ###   ########.fr       */
+/*   Updated: 2022/01/24 18:39:06 by mbutter          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_elem_of_stack *exclude_elem(t_stack *stack)
+static t_elem_of_stack *exclude_elem(t_stack *stack)
 {
 	t_elem_of_stack *elem;
 	t_elem_of_stack *prev;
@@ -39,14 +39,41 @@ t_elem_of_stack *exclude_elem(t_stack *stack)
 	return (elem);
 }
 
-void op_px(t_stack *from, t_stack *to, enum e_operation id)
+static void push_elem(t_stack *stack, t_elem_of_stack *elem)
+{
+	t_elem_of_stack	*tmp;
+
+	if (stack && elem)
+	{
+		if (stack->head != NULL)
+		{
+			tmp = stack->head->prev;
+			elem->prev = tmp;
+			tmp->next = elem;
+			elem->next = stack->head;
+			stack->head->prev = elem;
+			stack->head = elem;
+		}
+		else
+		{
+			stack->head = elem;
+			stack->head->next = elem;
+			stack->head->prev = elem;
+		}
+	}
+}
+
+void op_px(t_stack *from, t_stack *to, enum e_stack name_stack)
 {
 	t_elem_of_stack *elem;
 
 	if (from == NULL || from->head == NULL)
 		return ;
 	elem = exclude_elem(from);
-	add_elem(to, elem);
+	push_elem(to, elem);
 	to->size++;
-	print_operation(id);
+	if (name_stack == e_stack_a)
+		print_operation(e_op_pa);
+	else
+		print_operation(e_op_pb);
 }

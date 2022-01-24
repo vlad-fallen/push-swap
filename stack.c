@@ -6,7 +6,7 @@
 /*   By: mbutter <mbutter@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 17:37:06 by mbutter           #+#    #+#             */
-/*   Updated: 2022/01/20 16:04:23 by mbutter          ###   ########.fr       */
+/*   Updated: 2022/01/24 18:18:41 by mbutter          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_elem_of_stack	*create_elem(int num)
 		new->num = num;
 		new->next = NULL;
 		new->prev = NULL;
+		new->markup = 0;
 	}
 	else
 		exit(EXIT_FAILURE);
@@ -51,15 +52,16 @@ void add_elem(t_stack *stack, t_elem_of_stack *elem)
 	}
 }
 
-t_stack *init_stack(void)
+t_stack *init_stack(enum e_stack e_name_stack)
 {
 	t_stack *stack;
 
 	stack = (t_stack *)malloc(sizeof(t_stack));
 	if (stack == NULL)
-		err_arg();
+		err_arg(5);
 	stack->head = NULL;
 	stack->size = 0;
+	stack->name_stack = e_name_stack;
 	return (stack);
 }
 
