@@ -6,7 +6,7 @@
 /*   By: mbutter <mbutter@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 15:41:37 by mbutter           #+#    #+#             */
-/*   Updated: 2022/01/24 18:34:38 by mbutter          ###   ########.fr       */
+/*   Updated: 2022/01/25 18:12:19 by mbutter          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,12 @@ void print_operation(enum e_operation id)
 int ft_abs(int value)
 {
 	if (value < 0)
-		value = value * (-1);
+		value = -value;
 	return (value);
 }
 
 //УБРАТЬ ФУНКЦИЮ
-void print_stack(t_elem_of_stack *start_stack, int size_stack)
+void print_stack(t_elem_of_stack *start_stack, int size_stack, enum e_stack name_stack)
 {
 	int i;
 	t_elem_of_stack *tmp;
@@ -62,9 +62,14 @@ void print_stack(t_elem_of_stack *start_stack, int size_stack)
 	tmp = start_stack;
 	while (i < size_stack)
 	{
-		printf("%d:%d\t", tmp->num, tmp->markup);
+		printf("%d:%d    ", tmp->num, tmp->markup);
 		tmp = tmp->next;
 		i++;
 	}
-	printf("size: %d\n", size_stack);
+	printf("size: %d\t", size_stack);
+	if (name_stack == e_stack_a)
+		printf("stack a\n");
+	else
+		printf("stack b\n");
+
 }

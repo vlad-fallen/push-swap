@@ -6,7 +6,7 @@
 /*   By: mbutter <mbutter@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 14:04:41 by mbutter           #+#    #+#             */
-/*   Updated: 2022/01/24 18:39:06 by mbutter          ###   ########.fr       */
+/*   Updated: 2022/01/25 14:53:37 by mbutter          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,10 @@ static void push_elem(t_stack *stack, t_elem_of_stack *elem)
 		if (stack->head != NULL)
 		{
 			tmp = stack->head->prev;
-			elem->prev = tmp;
-			tmp->next = elem;
 			elem->next = stack->head;
+			elem->prev = stack->head->prev;
 			stack->head->prev = elem;
+			tmp->next = elem;
 			stack->head = elem;
 		}
 		else

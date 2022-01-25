@@ -6,7 +6,7 @@
 /*   By: mbutter <mbutter@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 15:15:33 by mbutter           #+#    #+#             */
-/*   Updated: 2022/01/22 17:03:34 by mbutter          ###   ########.fr       */
+/*   Updated: 2022/01/25 15:11:04 by mbutter          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,22 @@ static t_elem_of_stack *swap_elem(t_elem_of_stack *start_of_stack)
 {
 	t_elem_of_stack *elem1;
 	t_elem_of_stack *elem2;
-	t_elem_of_stack *tmp;
+	t_elem_of_stack *prev;
+	t_elem_of_stack *next;
 
 	elem1 = start_of_stack;
-	elem2 = start_of_stack->next;
-	tmp = elem1->prev;
-	elem2->next->prev = elem1;
-	elem1->next = elem2->next;
-	elem1->prev = elem2;
-	tmp->next = elem2;
-	elem2->next = elem1;
-	elem2->prev = tmp;
+	elem2 = elem1->next;
+	prev = elem1->prev;
+	next = elem2->next;
+	if (prev != elem2 && next != elem1)
+	{
+		prev->next = elem2;
+		elem2->prev = prev;
+		elem2->next = elem1;
+		elem1->prev = elem2;
+		elem1->next = next;
+		next->prev = elem1;
+	}
 	return (elem2);
 }
 

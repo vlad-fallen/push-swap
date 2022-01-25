@@ -6,7 +6,7 @@
 /*   By: mbutter <mbutter@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 15:34:48 by mbutter           #+#    #+#             */
-/*   Updated: 2022/01/24 18:17:23 by mbutter          ###   ########.fr       */
+/*   Updated: 2022/01/25 16:13:12 by mbutter          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ enum e_operation
 /* utils.c */
 void	err_arg(int n);
 void print_operation(enum e_operation id);
-void print_stack(t_elem_of_stack *start_stack, int size_stack);
+void print_stack(t_elem_of_stack *start_stack, int size_stack, enum e_stack name_stack);
 int ft_abs(int value);
 
 /* parse.c */
