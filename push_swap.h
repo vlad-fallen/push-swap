@@ -6,7 +6,7 @@
 /*   By: mbutter <mbutter@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 15:34:48 by mbutter           #+#    #+#             */
-/*   Updated: 2022/01/25 16:13:12 by mbutter          ###   ########.fr       */
+/*   Updated: 2022/01/30 16:44:07 by mbutter          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_elem_of_stack
 {
 	int				num;
 	int				markup;
+	int				index;
 	struct s_elem_of_stack	*prev;
 	struct s_elem_of_stack	*next;
 }	t_elem_of_stack;
@@ -71,6 +72,7 @@ int ft_abs(int value);
 
 /* parse.c */
 t_stack *parsing_args(int argc, char ** argv);
+void parsing_index(t_stack *stack);
 
 /* stack.c */
 t_stack *create_stack(int *array, int size_arr);
@@ -91,6 +93,7 @@ void op_px(t_stack *from, t_stack *to, enum e_stack name_stack);
 t_elem_of_stack *find_median(t_stack *stack, int size_chunk);
 
 /* sorting_algo.c */
+void push_or_rotate(t_stack *main_stack, t_stack *stack, int mark, int size_chunk);
 void quicksort(t_stack *main_stack, t_stack *stack, int mark);
 
 #endif

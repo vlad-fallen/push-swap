@@ -6,7 +6,7 @@
 /*   By: mbutter <mbutter@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 17:37:06 by mbutter           #+#    #+#             */
-/*   Updated: 2022/01/24 18:18:41 by mbutter          ###   ########.fr       */
+/*   Updated: 2022/01/29 14:10:49 by mbutter          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ t_stack *init_stack(enum e_stack e_name_stack)
 
 	stack = (t_stack *)malloc(sizeof(t_stack));
 	if (stack == NULL)
-		err_arg(5);
+		err_arg(5);		// убрать цифры!!
 	stack->head = NULL;
 	stack->size = 0;
 	stack->name_stack = e_name_stack;

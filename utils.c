@@ -6,7 +6,7 @@
 /*   By: mbutter <mbutter@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 15:41:37 by mbutter           #+#    #+#             */
-/*   Updated: 2022/01/25 18:12:19 by mbutter          ###   ########.fr       */
+/*   Updated: 2022/01/29 15:48:28 by mbutter          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 void err_arg(int n)
 {
-	ft_putstr_fd(ft_itoa(n), 2);
-	ft_putstr_fd("Error\n", 2);
+	if (n == 1)
+		ft_putstr_fd("Error\n", 2);
+	else if (n == 2)
+		ft_putstr_fd("Error with allocate memory\n", 2);
 	exit(EXIT_FAILURE);
 }
 
@@ -62,7 +64,7 @@ void print_stack(t_elem_of_stack *start_stack, int size_stack, enum e_stack name
 	tmp = start_stack;
 	while (i < size_stack)
 	{
-		printf("%d:%d    ", tmp->num, tmp->markup);
+		printf("%d:%d:%d    ", tmp->num, tmp->markup, tmp->index);
 		tmp = tmp->next;
 		i++;
 	}

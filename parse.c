@@ -6,7 +6,7 @@
 /*   By: mbutter <mbutter@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 14:09:18 by mbutter           #+#    #+#             */
-/*   Updated: 2022/01/25 17:14:10 by mbutter          ###   ########.fr       */
+/*   Updated: 2022/01/29 14:41:36 by mbutter          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ static void check_num(const char *str)
 	if (!((str[i] >= '0' && str[i] <= '9') || str[i] == '\0'))
 		err_arg(1);
 	if (str[i] == '\0' && flag == 0)
-		err_arg(2);
+		err_arg(1);
 	if (!((sign == 0 && n <= 2147483647) || (sign == 1 && n <= 2147483648)))
-		err_arg(3);
+		err_arg(1);
 }
 
 static void check_dup(t_stack *stack)
@@ -57,7 +57,7 @@ static void check_dup(t_stack *stack)
 		while (tmp_j != stack->head)
 		{
 			if (tmp_i->num == tmp_j->num)
-				err_arg(4);
+				err_arg(1);
 			tmp_j = tmp_j->next;
 		}
 		i++;

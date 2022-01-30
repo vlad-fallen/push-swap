@@ -6,12 +6,13 @@
 #    By: mbutter <mbutter@student.21-school.ru>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/04 15:40:50 by mbutter           #+#    #+#              #
-#    Updated: 2022/01/24 18:06:34 by mbutter          ###   ########.fr        #
+#    Updated: 2022/01/30 16:42:19 by mbutter          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS		=	push_swap.c \
 				parse.c \
+				parsing_index.c \
 				operations_swap.c \
 				operations_rotate.c \
 				operations_reverse_rotate.c \
@@ -19,7 +20,8 @@ SRCS		=	push_swap.c \
 				stack.c \
 				utils.c \
 				find_median.c \
-				sorting_algo.c
+				sorting_algo.c \
+				sorting_utils.c
 
 OBJS		=	$(patsubst %.c,%.o,$(SRCS)) 
 

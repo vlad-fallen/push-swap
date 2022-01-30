@@ -6,7 +6,7 @@
 /*   By: mbutter <mbutter@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 17:16:18 by mbutter           #+#    #+#             */
-/*   Updated: 2022/01/25 16:51:59 by mbutter          ###   ########.fr       */
+/*   Updated: 2022/01/30 16:38:21 by mbutter          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void swap_2_elem(t_stack *main_stack,t_stack *stack, int size_chunk)
 			stack->head->next->markup = 0;
 		}
 	}
-	else
+	else if (size_chunk == 1)
 	{
 		if (main_stack->name_stack == e_stack_b)
 		{
@@ -68,10 +68,7 @@ static void swap_2_elem(t_stack *main_stack,t_stack *stack, int size_chunk)
 static void rotate_mark(t_stack *stack, int mark)
 {
 	t_elem_of_stack *current;
-	//t_elem_of_stack *tmp;
 	int flag;
-	//int rx_size;
-	//int rrx_size;
 
 	current = stack->head->prev;
 	flag = 0;
@@ -87,30 +84,6 @@ static void rotate_mark(t_stack *stack, int mark)
 	}
 	if (flag)
 	{
-		/*tmp = current;
-		rx_size = 0;
-		rrx_size = 0;
-		while (tmp != stack->head)
-		{
-			rx_size++;
-			tmp = tmp->prev;
-		}
-		tmp = current;
-		while (tmp != stack->head)
-		{
-			rrx_size++;
-			tmp = tmp->next;
-		}
-		if (rx_size < rrx_size)
-		{
-			while (stack->head->markup == mark + 1)
-				op_rx(stack, stack->name_stack);
-		}
-		else
-		{
-			while (stack->head->prev->markup != mark + 1)
-				op_rrx(stack, stack->name_stack);
-		}*/
 		while (stack->head->prev->markup == mark + 1)
 		{
 			op_rrx(stack, stack->name_stack);
@@ -121,7 +94,6 @@ static void rotate_mark(t_stack *stack, int mark)
 void quicksort(t_stack *main_stack, t_stack *stack, int mark)
 {
 	int size_chunk;
-	t_elem_of_stack *median;
 
 	size_chunk = count_mark(main_stack, mark);
 	if (size_chunk <= 2)
@@ -129,26 +101,7 @@ void quicksort(t_stack *main_stack, t_stack *stack, int mark)
 		swap_2_elem(main_stack, stack, size_chunk);
 		return ;
 	}
-	median = find_median(main_stack, size_chunk);
-	while (main_stack->head->markup == mark)
-	{
-		if (main_stack->head->num > median->num)
-		{
-			main_stack->head->markup = mark + 1;
-			if (main_stack->name_stack == e_stack_a)
-				op_rx(main_stack, main_stack->name_stack);
-			else
-				op_px(main_stack, stack, stack->name_stack);
-		}
-		else
-		{
-			main_stack->head->markup = mark + 1;
-			if (main_stack->name_stack == e_stack_a)
-				op_px(main_stack, stack, stack->name_stack);
-			else
-				op_rx(main_stack, main_stack->name_stack);
-		}
-	}
+	push_or_rotate(main_stack, stack, mark, size_chunk);
 	rotate_mark(main_stack, mark);
 	if (main_stack->name_stack == e_stack_a)
 	{
@@ -160,5 +113,4 @@ void quicksort(t_stack *main_stack, t_stack *stack, int mark)
 		quicksort(stack, main_stack, mark + 1);
 		quicksort(main_stack, stack, mark + 1);
 	}
-	
 }
