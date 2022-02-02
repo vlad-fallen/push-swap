@@ -6,13 +6,13 @@
 /*   By: mbutter <mbutter@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 15:41:37 by mbutter           #+#    #+#             */
-/*   Updated: 2022/01/29 15:48:28 by mbutter          ###   ########.fr       */
+/*   Updated: 2022/02/02 17:01:41 by mbutter          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void err_arg(int n)
+void	err_arg(int n)
 {
 	if (n == 1)
 		ft_putstr_fd("Error\n", 2);
@@ -21,7 +21,7 @@ void err_arg(int n)
 	exit(EXIT_FAILURE);
 }
 
-void print_operation(enum e_operation id)
+void	print_operation(enum e_operation id)
 {
 	if (id == e_op_sa)
 		write(1, "sa\n", 3);
@@ -47,31 +47,9 @@ void print_operation(enum e_operation id)
 		write(1, "rrr\n", 4);
 }
 
-int ft_abs(int value)
+int	ft_abs(int value)
 {
 	if (value < 0)
 		value = -value;
 	return (value);
-}
-
-//УБРАТЬ ФУНКЦИЮ
-void print_stack(t_elem_of_stack *start_stack, int size_stack, enum e_stack name_stack)
-{
-	int i;
-	t_elem_of_stack *tmp;
-
-	i = 0;
-	tmp = start_stack;
-	while (i < size_stack)
-	{
-		printf("%d:%d:%d    ", tmp->num, tmp->markup, tmp->index);
-		tmp = tmp->next;
-		i++;
-	}
-	printf("size: %d\t", size_stack);
-	if (name_stack == e_stack_a)
-		printf("stack a\n");
-	else
-		printf("stack b\n");
-
 }

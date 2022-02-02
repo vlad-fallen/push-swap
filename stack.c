@@ -6,7 +6,7 @@
 /*   By: mbutter <mbutter@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 17:37:06 by mbutter           #+#    #+#             */
-/*   Updated: 2022/01/29 14:10:49 by mbutter          ###   ########.fr       */
+/*   Updated: 2022/02/02 17:01:16 by mbutter          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ t_elem_of_stack	*create_elem(int num)
 		new->markup = 0;
 	}
 	else
-		exit(EXIT_FAILURE);
+		err_arg(2);
 	return (new);
 }
 
-void add_elem(t_stack *stack, t_elem_of_stack *elem)
+void	add_elem(t_stack *stack, t_elem_of_stack *elem)
 {
 	t_elem_of_stack	*tmp;
 
@@ -52,29 +52,44 @@ void add_elem(t_stack *stack, t_elem_of_stack *elem)
 	}
 }
 
-t_stack *init_stack(enum e_stack e_name_stack)
+t_stack	*init_stack(enum e_stack e_name_stack)
 {
-	t_stack *stack;
+	t_stack	*stack;
 
 	stack = (t_stack *)malloc(sizeof(t_stack));
 	if (stack == NULL)
-		err_arg(5);		// убрать цифры!!
+		err_arg(2);
 	stack->head = NULL;
 	stack->size = 0;
 	stack->name_stack = e_name_stack;
 	return (stack);
 }
 
-/*t_stack *create_stack(int *array, int size_arr)
+static void	delete_elem(t_elem_of_stack *elem)
 {
-	int i;
-	t_stack *stack;
+	if (elem == NULL)
+		return ;
+	elem->next = NULL;
+	elem->prev = NULL;
+	free(elem);
+}
+
+void	delete_stack(t_stack *stack)
+{
+	t_elem_of_stack	*tmp;
+	int				i;
 
 	i = 0;
-	stack = NULL;
-	init_stack();
-	while (i < size_arr - 1)
-		add_elem(stack, create_elem(array[i++]));
-	stack->size_a = size_arr;
-	return(stack);
-}*/
+	if (stack == NULL)
+		return ;
+	if (stack->head != NULL)
+	{
+		while (i++ < stack->size)
+		{
+			tmp = stack->head;
+			stack->head = stack->head->next;
+			delete_elem(tmp);
+		}
+	}
+	free(stack);
+}

@@ -6,18 +6,17 @@
 /*   By: mbutter <mbutter@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 17:16:18 by mbutter           #+#    #+#             */
-/*   Updated: 2022/01/30 16:38:21 by mbutter          ###   ########.fr       */
+/*   Updated: 2022/02/02 16:55:01 by mbutter          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int count_mark(t_stack *stack, int mark)
+static int	count_mark(t_stack *stack, int mark)
 {
-	int count;
-	t_elem_of_stack *current;
-	t_elem_of_stack *end_stack;
-
+	int				count;
+	t_elem_of_stack	*current;
+	t_elem_of_stack	*end_stack;
 
 	count = 0;
 	current = stack->head;
@@ -32,7 +31,18 @@ static int count_mark(t_stack *stack, int mark)
 	return (count);
 }
 
-static void swap_2_elem(t_stack *main_stack,t_stack *stack, int size_chunk)
+static void	swap_2_elem_util(t_stack *main_stack, t_stack *stack)
+{
+	if (main_stack->name_stack == e_stack_b)
+	{
+		main_stack->head->markup = 0;
+		op_px(main_stack, stack, stack->name_stack);
+	}
+	if (main_stack->name_stack == e_stack_a)
+		main_stack->head->markup = 0;
+}
+
+static void	swap_2_elem(t_stack *main_stack, t_stack *stack, int size_chunk)
 {
 	if (size_chunk == 2)
 	{
@@ -54,21 +64,13 @@ static void swap_2_elem(t_stack *main_stack,t_stack *stack, int size_chunk)
 		}
 	}
 	else if (size_chunk == 1)
-	{
-		if (main_stack->name_stack == e_stack_b)
-		{
-			main_stack->head->markup = 0;
-			op_px(main_stack, stack, stack->name_stack);
-		}
-		if (main_stack->name_stack == e_stack_a)
-			main_stack->head->markup = 0;
-	}
+		swap_2_elem_util(main_stack, stack);
 }
 
-static void rotate_mark(t_stack *stack, int mark)
+static void	rotate_mark(t_stack *stack, int mark)
 {
-	t_elem_of_stack *current;
-	int flag;
+	t_elem_of_stack	*current;
+	int				flag;
 
 	current = stack->head->prev;
 	flag = 0;
@@ -91,9 +93,9 @@ static void rotate_mark(t_stack *stack, int mark)
 	}
 }
 
-void quicksort(t_stack *main_stack, t_stack *stack, int mark)
+void	quicksort(t_stack *main_stack, t_stack *stack, int mark)
 {
-	int size_chunk;
+	int	size_chunk;
 
 	size_chunk = count_mark(main_stack, mark);
 	if (size_chunk <= 2)

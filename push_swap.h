@@ -6,15 +6,14 @@
 /*   By: mbutter <mbutter@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 15:34:48 by mbutter           #+#    #+#             */
-/*   Updated: 2022/01/30 16:44:07 by mbutter          ###   ########.fr       */
+/*   Updated: 2022/02/02 16:32:53 by mbutter          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include "./libft/libft.h"
-#include <stdio.h>
+# include "./libft/libft.h"
 
 enum e_stack
 {
@@ -24,30 +23,19 @@ enum e_stack
 
 typedef struct s_elem_of_stack
 {
-	int				num;
-	int				markup;
-	int				index;
+	int						num;
+	int						markup;
+	int						index;
 	struct s_elem_of_stack	*prev;
 	struct s_elem_of_stack	*next;
 }	t_elem_of_stack;
 
 typedef struct s_stack
 {
-	int size;
-	t_elem_of_stack *head;
-	enum e_stack name_stack;
+	int				size;
+	t_elem_of_stack	*head;
+	enum e_stack	name_stack;
 }	t_stack;
-
-/*typedef struct s_chunk
-{
-	t_elem_of_stack *max_elem;
-	t_elem_of_stack *min_elem;
-	t_elem_of_stack *mid_elem;
-	t_elem_of_stack *start_chunk;
-	t_elem_of_stack *end_chunk;
-	int size;
-
-}	t_chunk;*/
 
 enum e_operation
 {
@@ -65,35 +53,38 @@ enum e_operation
 };
 
 /* utils.c */
-void	err_arg(int n);
-void print_operation(enum e_operation id);
-void print_stack(t_elem_of_stack *start_stack, int size_stack, enum e_stack name_stack);
-int ft_abs(int value);
+void			err_arg(int n);
+void			print_operation(enum e_operation id);
+int				ft_abs(int value);
 
 /* parse.c */
-t_stack *parsing_args(int argc, char ** argv);
-void parsing_index(t_stack *stack);
+t_stack			*parsing_args(int argc, char **argv);
+void			parsing_index(t_stack *stack);
+int				check_sort(t_stack *stack);
 
 /* stack.c */
-t_stack *create_stack(int *array, int size_arr);
-void add_elem(t_stack *stack, t_elem_of_stack *elem);
+t_stack			*create_stack(int *array, int size_arr);
+void			add_elem(t_stack *stack, t_elem_of_stack *elem);
 t_elem_of_stack	*create_elem(int num);
-t_stack *init_stack(enum e_stack name_stack);
+t_stack			*init_stack(enum e_stack name_stack);
+void			delete_stack(t_stack *stack);
 
 /* operations */
-void op_sx(t_stack *stack, enum e_stack name_stack);
-void op_ss(t_stack *a_stack, t_stack *b_stack);
-void op_rx(t_stack *stack, enum e_stack name_stack);
-void op_rr(t_stack *a_stack, t_stack *b_stack);
-void op_rrx(t_stack *stack, enum e_stack name_stack);
-void op_rrr(t_stack *a_stack, t_stack *b_stack);
-void op_px(t_stack *from, t_stack *to, enum e_stack name_stack);
+void			op_sx(t_stack *stack, enum e_stack name_stack);
+void			op_ss(t_stack *a_stack, t_stack *b_stack);
+void			op_rx(t_stack *stack, enum e_stack name_stack);
+void			op_rr(t_stack *a_stack, t_stack *b_stack);
+void			op_rrx(t_stack *stack, enum e_stack name_stack);
+void			op_rrr(t_stack *a_stack, t_stack *b_stack);
+void			op_px(t_stack *from, t_stack *to, enum e_stack name_stack);
 
 /* find_median.c */
-t_elem_of_stack *find_median(t_stack *stack, int size_chunk);
+t_elem_of_stack	*find_median(t_stack *stack, int size_chunk);
 
-/* sorting_algo.c */
-void push_or_rotate(t_stack *main_stack, t_stack *stack, int mark, int size_chunk);
-void quicksort(t_stack *main_stack, t_stack *stack, int mark);
+/* sorting */
+void			sort_3_elements(t_stack *stack);
+void			push_or_rotate(t_stack *main_stack, t_stack *stack, int mark,
+					int size_chunk);
+void			quicksort(t_stack *main_stack, t_stack *stack, int mark);
 
 #endif

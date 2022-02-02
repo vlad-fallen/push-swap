@@ -6,17 +6,17 @@
 /*   By: mbutter <mbutter@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 13:59:24 by mbutter           #+#    #+#             */
-/*   Updated: 2022/01/29 15:49:32 by mbutter          ###   ########.fr       */
+/*   Updated: 2022/02/02 16:20:49 by mbutter          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void sort_array(int *array, int size)
+static void	sort_array(int *array, int size)
 {
-	int i;
-	int j;
-	int tmp;
+	int	i;
+	int	j;
+	int	tmp;
 
 	i = 0;
 	j = 0;
@@ -37,11 +37,11 @@ static void sort_array(int *array, int size)
 	}
 }
 
-void parsing_index(t_stack *stack)
+void	parsing_index(t_stack *stack)
 {
-	int *array;
-	int i;
-	t_elem_of_stack *tmp;
+	int				*array;
+	int				i;
+	t_elem_of_stack	*tmp;
 
 	tmp = stack->head;
 	array = (int *)malloc(sizeof(int) * stack->size);
@@ -62,4 +62,5 @@ void parsing_index(t_stack *stack)
 			tmp = tmp->next;
 		tmp->index = i++;
 	}
+	free(array);
 }
