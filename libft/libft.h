@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbutter <mbutter@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mbutter <mbutter@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 13:06:48 by mbutter           #+#    #+#             */
-/*   Updated: 2021/10/11 18:12:45 by mbutter          ###   ########.fr       */
+/*   Updated: 2022/02/02 18:16:03 by mbutter          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
 
 typedef struct s_list
 {
@@ -61,6 +65,7 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
+char	*get_next_line(int fd);
 
 /*--------PART BONUS--------*/
 

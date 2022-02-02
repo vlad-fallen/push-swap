@@ -6,7 +6,7 @@
 /*   By: mbutter <mbutter@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 18:20:12 by mbutter           #+#    #+#             */
-/*   Updated: 2022/02/02 16:28:46 by mbutter          ###   ########.fr       */
+/*   Updated: 2022/02/02 19:08:20 by mbutter          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ static void	sort_3_elem_util(t_elem_of_stack *elem_1, t_elem_of_stack *elem_2,
 	if (elem_1->index > elem_2->index && elem_2->index > elem_3->index
 		&& elem_3->index < elem_1->index)
 	{
-		op_sx(stack, stack->name_stack);
-		op_rrx(stack, stack->name_stack);
+		op_sx(stack, stack->name_stack, 1);
+		op_rrx(stack, stack->name_stack, 1);
 	}
 	else if (elem_1->index < elem_2->index && elem_2->index > elem_3->index
 		&& elem_3->index > elem_1->index)
 	{
-		op_sx(stack, stack->name_stack);
-		op_rx(stack, stack->name_stack);
+		op_sx(stack, stack->name_stack, 1);
+		op_rx(stack, stack->name_stack, 1);
 	}
 }
 
@@ -42,13 +42,13 @@ void	sort_3_elements(t_stack *stack)
 	elem_3 = elem_2->next;
 	if (elem_1->index > elem_2->index && elem_2->index < elem_3->index
 		&& elem_3->index > elem_1->index)
-		op_sx(stack, stack->name_stack);
+		op_sx(stack, stack->name_stack, 1);
 	else if (elem_1->index > elem_2->index && elem_2->index < elem_3->index
 		&& elem_3->index < elem_1->index)
-		op_rx(stack, stack->name_stack);
+		op_rx(stack, stack->name_stack, 1);
 	else if (elem_1->index < elem_2->index && elem_2->index > elem_3->index
 		&& elem_3->index < elem_1->index)
-		op_rrx(stack, stack->name_stack);
+		op_rrx(stack, stack->name_stack, 1);
 	else
 		sort_3_elem_util(elem_1, elem_2, elem_3, stack);
 }

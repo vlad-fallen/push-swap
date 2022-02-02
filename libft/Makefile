@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mbutter <mbutter@student.42.fr>            +#+  +:+       +#+         #
+#    By: mbutter <mbutter@student.21-school.ru>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/06 15:42:55 by mbutter           #+#    #+#              #
-#    Updated: 2021/10/12 12:59:21 by mbutter          ###   ########.fr        #
+#    Updated: 2022/02/02 18:21:39 by mbutter          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,8 @@ SRCS		=	ft_atoi.c \
 				ft_putchar_fd.c \
 				ft_putstr_fd.c \
 				ft_putendl_fd.c \
-				ft_putnbr_fd.c 
+				ft_putnbr_fd.c \
+				get_next_line.c 
 
 OBJS		=	$(SRCS:.c=.o)
 
@@ -59,6 +60,10 @@ BONUS		=	ft_lstnew.c \
 
 BONUS_OBJS	=	$(BONUS:.c=.o)
 
+D_FILES		=	$(patsubst %.c,%.d,$(SRCS)) 
+
+D_FILES_B	=	$(patsubst %.c,%.d,$(BONUS))
+
 CC			=	gcc
 
 RM			=	rm -f
@@ -68,7 +73,7 @@ CFLAGS		=	-Wall -Wextra -Werror -I ./
 NAME		=	libft.a
 
 .c.o:
-			$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
+			$(CC) $(CFLAGS) -c $< -o $(<:.c=.o) -MMD
 
 $(NAME):	$(OBJS)
 			ar rc $(NAME) $(OBJS)
@@ -77,7 +82,7 @@ $(NAME):	$(OBJS)
 all:		$(NAME)
 
 clean:
-			$(RM) $(OBJS) $(BONUS_OBJS)
+			$(RM) $(OBJS) $(BONUS_OBJS) $(D_FILES)
 
 fclean:		clean
 			$(RM) $(NAME)
@@ -89,3 +94,5 @@ bonus:		$(OBJS) $(BONUS_OBJS)
 			ranlib $(NAME)
 
 .PHONY:		all clean fclean re bonus
+
+include $(wildcard $(D_FILES))

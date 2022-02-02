@@ -6,7 +6,7 @@
 /*   By: mbutter <mbutter@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 15:34:48 by mbutter           #+#    #+#             */
-/*   Updated: 2022/02/02 16:32:53 by mbutter          ###   ########.fr       */
+/*   Updated: 2022/02/02 19:04:54 by mbutter          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,14 @@ t_stack			*init_stack(enum e_stack name_stack);
 void			delete_stack(t_stack *stack);
 
 /* operations */
-void			op_sx(t_stack *stack, enum e_stack name_stack);
-void			op_ss(t_stack *a_stack, t_stack *b_stack);
-void			op_rx(t_stack *stack, enum e_stack name_stack);
-void			op_rr(t_stack *a_stack, t_stack *b_stack);
-void			op_rrx(t_stack *stack, enum e_stack name_stack);
-void			op_rrr(t_stack *a_stack, t_stack *b_stack);
-void			op_px(t_stack *from, t_stack *to, enum e_stack name_stack);
+void			op_sx(t_stack *stack, enum e_stack name_stack, int flag);
+void			op_ss(t_stack *a_stack, t_stack *b_stack, int flag);
+void			op_rx(t_stack *stack, enum e_stack name_stack, int flag);
+void			op_rr(t_stack *a_stack, t_stack *b_stack, int flag);
+void			op_rrx(t_stack *stack, enum e_stack name_stack, int flag);
+void			op_rrr(t_stack *a_stack, t_stack *b_stack, int flag);
+void			op_px(t_stack *from, t_stack *to, enum e_stack name_stack,
+					int flag);
 
 /* find_median.c */
 t_elem_of_stack	*find_median(t_stack *stack, int size_chunk);

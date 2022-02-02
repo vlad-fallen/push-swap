@@ -6,7 +6,7 @@
 /*   By: mbutter <mbutter@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 17:16:18 by mbutter           #+#    #+#             */
-/*   Updated: 2022/02/02 16:55:01 by mbutter          ###   ########.fr       */
+/*   Updated: 2022/02/02 19:07:47 by mbutter          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	swap_2_elem_util(t_stack *main_stack, t_stack *stack)
 	if (main_stack->name_stack == e_stack_b)
 	{
 		main_stack->head->markup = 0;
-		op_px(main_stack, stack, stack->name_stack);
+		op_px(main_stack, stack, stack->name_stack, 1);
 	}
 	if (main_stack->name_stack == e_stack_a)
 		main_stack->head->markup = 0;
@@ -49,16 +49,16 @@ static void	swap_2_elem(t_stack *main_stack, t_stack *stack, int size_chunk)
 		if (main_stack->name_stack == e_stack_a)
 		{
 			if (main_stack->head->num > main_stack->head->next->num)
-				op_sx(main_stack, main_stack->name_stack);
+				op_sx(main_stack, main_stack->name_stack, 1);
 			main_stack->head->markup = 0;
 			main_stack->head->next->markup = 0;
 		}
 		else
 		{
-			op_px(main_stack, stack, stack->name_stack);
-			op_px(main_stack, stack, stack->name_stack);
+			op_px(main_stack, stack, stack->name_stack, 1);
+			op_px(main_stack, stack, stack->name_stack, 1);
 			if (stack->head->num > stack->head->next->num)
-				op_sx(stack, stack->name_stack);
+				op_sx(stack, stack->name_stack, 1);
 			stack->head->markup = 0;
 			stack->head->next->markup = 0;
 		}
@@ -88,7 +88,7 @@ static void	rotate_mark(t_stack *stack, int mark)
 	{
 		while (stack->head->prev->markup == mark + 1)
 		{
-			op_rrx(stack, stack->name_stack);
+			op_rrx(stack, stack->name_stack, 1);
 		}
 	}
 }

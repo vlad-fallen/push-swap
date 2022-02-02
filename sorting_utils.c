@@ -6,7 +6,7 @@
 /*   By: mbutter <mbutter@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 16:35:06 by mbutter           #+#    #+#             */
-/*   Updated: 2022/02/02 16:57:15 by mbutter          ###   ########.fr       */
+/*   Updated: 2022/02/02 19:08:46 by mbutter          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,12 @@ static void	choice_1(t_stack *main_stack, t_stack *stack,
 	main_stack->head->markup++;
 	if (main_stack->name_stack == e_stack_a && *push_size > 0)
 	{
-		op_rx(main_stack, main_stack->name_stack);
+		op_rx(main_stack, main_stack->name_stack, 1);
 		(*rotate_size)--;
 	}
 	else if (main_stack->name_stack == e_stack_b && *push_size > 0)
 	{
-		op_px(main_stack, stack, stack->name_stack);
+		op_px(main_stack, stack, stack->name_stack, 1);
 		(*push_size)--;
 	}
 }
@@ -78,12 +78,12 @@ static void	choice_2(t_stack *main_stack, t_stack *stack,
 	main_stack->head->markup++;
 	if (main_stack->name_stack == e_stack_a && *push_size > 0)
 	{
-		op_px(main_stack, stack, stack->name_stack);
+		op_px(main_stack, stack, stack->name_stack, 1);
 		(*push_size)--;
 	}
 	else if (main_stack->name_stack == e_stack_b && *push_size > 0)
 	{
-		op_rx(main_stack, main_stack->name_stack);
+		op_rx(main_stack, main_stack->name_stack, 1);
 		(*rotate_size)--;
 	}
 }

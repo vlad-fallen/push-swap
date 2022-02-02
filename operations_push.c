@@ -6,7 +6,7 @@
 /*   By: mbutter <mbutter@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 14:04:41 by mbutter           #+#    #+#             */
-/*   Updated: 2022/02/02 15:50:16 by mbutter          ###   ########.fr       */
+/*   Updated: 2022/02/02 19:03:52 by mbutter          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static void	push_elem(t_stack *stack, t_elem_of_stack *elem)
 	}
 }
 
-void	op_px(t_stack *from, t_stack *to, enum e_stack name_stack)
+void	op_px(t_stack *from, t_stack *to, enum e_stack name_stack, int flag)
 {
 	t_elem_of_stack	*elem;
 
@@ -72,6 +72,8 @@ void	op_px(t_stack *from, t_stack *to, enum e_stack name_stack)
 	elem = exclude_elem(from);
 	push_elem(to, elem);
 	to->size++;
+	if (flag == 0)
+		return ;
 	if (name_stack == e_stack_a)
 		print_operation(e_op_pa);
 	else
