@@ -6,7 +6,7 @@
 /*   By: mbutter <mbutter@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 18:24:39 by mbutter           #+#    #+#             */
-/*   Updated: 2022/02/02 19:35:19 by mbutter          ###   ########.fr       */
+/*   Updated: 2022/02/02 19:52:50 by mbutter          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,8 @@ int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
-	int count_op;
-	char *str_count_op;
+	int		count_op;
 
-	str_count_op = NULL;
 	if (argc < 2)
 		err_arg(0);
 	stack_a = parsing_args(argc, argv);
