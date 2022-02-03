@@ -6,7 +6,7 @@
 /*   By: mbutter <mbutter@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 14:04:41 by mbutter           #+#    #+#             */
-/*   Updated: 2022/02/02 19:03:52 by mbutter          ###   ########.fr       */
+/*   Updated: 2022/02/03 15:49:41 by mbutter          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,11 @@ void	op_px(t_stack *from, t_stack *to, enum e_stack name_stack, int flag)
 	elem = exclude_elem(from);
 	push_elem(to, elem);
 	to->size++;
-	if (flag == 0)
-		return ;
-	if (name_stack == e_stack_a)
-		print_operation(e_op_pa);
-	else
-		print_operation(e_op_pb);
+	if (flag == 1)
+	{
+		if (name_stack == e_stack_a)
+			print_operation(e_op_pa);
+		else
+			print_operation(e_op_pb);
+	}
 }
