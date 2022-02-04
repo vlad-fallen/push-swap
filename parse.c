@@ -6,13 +6,13 @@
 /*   By: mbutter <mbutter@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 14:09:18 by mbutter           #+#    #+#             */
-/*   Updated: 2022/02/02 16:47:56 by mbutter          ###   ########.fr       */
+/*   Updated: 2022/02/04 14:58:32 by mbutter          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	check_num_util(const char *str, unsigned int n, int flag, int sign)
+static void	check_num_util(const char *str, unsigned long n, int flag, int sign)
 {
 	if (!((*str >= '0' && *str <= '9') || *str == '\0'))
 		err_arg(1);
@@ -25,7 +25,7 @@ static void	check_num_util(const char *str, unsigned int n, int flag, int sign)
 static void	check_num(const char *str)
 {
 	int				i;
-	unsigned int	n;
+	unsigned long	n;
 	int				sign;
 	int				flag;
 
@@ -61,7 +61,10 @@ static void	check_dup(t_stack *stack)
 		while (tmp_j != stack->head)
 		{
 			if (tmp_i->num == tmp_j->num)
+			{
+				delete_stack(stack);
 				err_arg(1);
+			}
 			tmp_j = tmp_j->next;
 		}
 		i++;

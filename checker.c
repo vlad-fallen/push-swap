@@ -6,12 +6,11 @@
 /*   By: mbutter <mbutter@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 18:24:39 by mbutter           #+#    #+#             */
-/*   Updated: 2022/02/03 17:43:05 by mbutter          ###   ########.fr       */
+/*   Updated: 2022/02/04 14:44:36 by mbutter          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 static void	execution_op(t_stack *stack_a, t_stack *stack_b, char *str)
 {
