@@ -6,7 +6,7 @@
 #    By: mbutter <mbutter@student.21-school.ru>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/04 15:40:50 by mbutter           #+#    #+#              #
-#    Updated: 2022/02/02 19:51:31 by mbutter          ###   ########.fr        #
+#    Updated: 2022/02/05 19:24:26 by mbutter          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRCS		=	push_swap.c \
 				find_median.c \
 				sorting_algo.c \
 				sort_3_elem.c \
+				sort_3_elem_in_stack.c \
 				sorting_utils.c
 
 OBJS		=	$(patsubst %.c,%.o,$(SRCS)) 
@@ -43,7 +44,7 @@ CC			=	gcc
 
 RM			=	rm -f
 
-CFLAGS		=	-Wall -Wextra -Werror
+CFLAGS		=	-Wall -Wextra -Werror -g
 
 NAME		=	push_swap
 
@@ -52,7 +53,7 @@ BONUS_NAME	=	checker
 %.o:		%.c
 			$(CC) $(CFLAGS) -c $< -o $@ -MMD
 
-$(NAME):	$(OBJS)
+$(NAME):	$(OBJS) Makefile 
 			@make -C ./libft
 			$(CC) $(CFLAGS) $(OBJS) ./libft/libft.a -o $(NAME) -MMD
 

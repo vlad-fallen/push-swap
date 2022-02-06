@@ -6,7 +6,7 @@
 /*   By: mbutter <mbutter@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 16:35:06 by mbutter           #+#    #+#             */
-/*   Updated: 2022/02/02 19:08:46 by mbutter          ###   ########.fr       */
+/*   Updated: 2022/02/06 17:44:22 by mbutter          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,10 @@ static int	count_push(t_stack *main_stack, t_elem_of_stack *median,
 	i = 0;
 	while (i < size_chunk)
 	{
-		if (tmp->num <= median->num && main_stack->name_stack == e_stack_a)
+		if (tmp->index < median->index && main_stack->name_stack == e_stack_a)
 			push_size++;
-		else if (tmp->num > median->num && main_stack->name_stack == e_stack_b)
+		else if (tmp->index >= median->index
+			&& main_stack->name_stack == e_stack_b)
 			push_size++;
 		i++;
 		tmp = tmp->next;
@@ -46,9 +47,10 @@ static int	count_rotate(t_stack *main_stack, t_elem_of_stack *median,
 	i = 0;
 	while (i < size_chunk)
 	{
-		if (tmp->num <= median->num && main_stack->name_stack == e_stack_b)
+		if (tmp->index < median->index && main_stack->name_stack == e_stack_b)
 			rotate_size++;
-		else if (tmp->num > median->num && main_stack->name_stack == e_stack_a)
+		else if (tmp->index >= median->index
+			&& main_stack->name_stack == e_stack_a)
 			rotate_size++;
 		i++;
 		tmp = tmp->next;
@@ -101,7 +103,7 @@ void	push_or_rotate(t_stack *main_stack, t_stack *stack,
 	rotate_size = count_rotate(main_stack, median, size_chunk);
 	while (main_stack->head->markup == mark)
 	{
-		if (main_stack->head->num > median->num)
+		if (main_stack->head->index >= median->index)
 			choice_1(main_stack, stack, &push_size, &rotate_size);
 		else
 			choice_2(main_stack, stack, &push_size, &rotate_size);

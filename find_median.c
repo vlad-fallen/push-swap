@@ -6,7 +6,7 @@
 /*   By: mbutter <mbutter@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/23 12:52:33 by mbutter           #+#    #+#             */
-/*   Updated: 2022/02/02 15:49:16 by mbutter          ###   ########.fr       */
+/*   Updated: 2022/02/06 17:42:24 by mbutter          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,12 @@ static t_elem_of_stack	*find_max_elem(t_stack *stack, int size_chunk)
 	i = 0;
 	current = stack->head->next;
 	max = stack->head;
-	while (current != stack->head && i++ < size_chunk)
+	while (current != stack->head && i < size_chunk)
 	{
-		if (max->num < current->num)
+		if (max->index < current->index)
 			max = current;
 		current = current->next;
+		i++;
 	}
 	return (max);
 }
@@ -39,11 +40,12 @@ static t_elem_of_stack	*find_min_elem(t_stack *stack, int size_chunk)
 	i = 0;
 	current = stack->head->next;
 	min = stack->head;
-	while (current != stack->head && i++ < size_chunk)
+	while (current != stack->head && i < size_chunk - 1)
 	{
-		if (min->num > current->num)
+		if (min->index > current->index)
 			min = current;
 		current = current->next;
+		i++;
 	}
 	return (min);
 }
@@ -56,17 +58,17 @@ t_elem_of_stack	*find_median(t_stack *stack, int size_chunk)
 	int				i;
 
 	i = 0;
-	average_value = (find_max_elem(stack, size_chunk)->num + \
-		find_min_elem(stack, size_chunk)->num) / 2;
+	average_value = (find_max_elem(stack, size_chunk)->index + \
+		find_min_elem(stack, size_chunk)->index) / 2;
 	median = stack->head;
 	current = stack->head->next;
 	while (i < size_chunk)
 	{
-		if (ft_abs(current->num - average_value) < \
-			ft_abs(median->num - average_value))
+		if (current->index == average_value)
+		{
 			median = current;
-		if (ft_abs(median->num - average_value) == 0)
 			break ;
+		}
 		current = current->next;
 		i++;
 	}

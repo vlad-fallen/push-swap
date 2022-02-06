@@ -6,7 +6,7 @@
 /*   By: mbutter <mbutter@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 15:34:48 by mbutter           #+#    #+#             */
-/*   Updated: 2022/02/02 19:04:54 by mbutter          ###   ########.fr       */
+/*   Updated: 2022/02/06 17:42:22 by mbutter          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "./libft/libft.h"
+# include <stdio.h>
 
 enum e_stack
 {
@@ -87,5 +88,11 @@ void			sort_3_elements(t_stack *stack);
 void			push_or_rotate(t_stack *main_stack, t_stack *stack, int mark,
 					int size_chunk);
 void			quicksort(t_stack *main_stack, t_stack *stack, int mark);
+void			sort_3_elem_in_stack(t_stack *main_stack, t_stack *stack);
+void			list_of_operations_1(t_stack *main_stack, t_stack *stack);
+void			list_of_operations_2(t_stack *main_stack, t_stack *stack);
+void			list_of_operations_3(t_stack *main_stack, t_stack *stack);
+void			list_of_operations_4(t_stack *main_stack, t_stack *stack);
+void			list_of_operations_5(t_stack *main_stack, t_stack *stack);
 
 #endif

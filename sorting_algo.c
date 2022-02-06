@@ -6,7 +6,7 @@
 /*   By: mbutter <mbutter@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 17:16:18 by mbutter           #+#    #+#             */
-/*   Updated: 2022/02/02 19:07:47 by mbutter          ###   ########.fr       */
+/*   Updated: 2022/02/06 17:42:19 by mbutter          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,11 @@ void	quicksort(t_stack *main_stack, t_stack *stack, int mark)
 	if (size_chunk <= 2)
 	{
 		swap_2_elem(main_stack, stack, size_chunk);
+		return ;
+	}
+	else if (size_chunk == 3)
+	{
+		sort_3_elem_in_stack(main_stack, stack);
 		return ;
 	}
 	push_or_rotate(main_stack, stack, mark, size_chunk);
